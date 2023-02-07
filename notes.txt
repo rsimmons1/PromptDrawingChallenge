@@ -1,0 +1,36 @@
+- Stackoverflow answer for how to do "import" statements 
+https://stackoverflow.com/questions/950087/how-do-i-include-a-javascript-file-in-another-javascript-file
+
+- Setting up project without front-end framework
+
+- Using NPM to access AWS API on the browser.
+
+- Storing files in s3 Bucket https://s3.console.aws.amazon.com/s3/buckets/2022-prompt-drawings
+
+- FRUSTRATED WITH STATE OF FRONT END DEV!!!!
+
+- Wanted Something without too much node
+
+- Ended up going with browserify (needs npm installed) https://browserify.org/
+a. It bundles all the deps into a single ".js" file that can be included in the page
+b. That's it, that's all I wanted.
+
+- For installing Node/npm
+1. Go to node website
+2. Download / install node
+
+- For browserify
+1. npm install browserify
+2. browserify main.js -o bundle.js
+3. include <script src="./bundle.js">
+4. ???
+5. Proft.
+
+- For using aws SDK (THIS WAS EXHAUSTING)
+1. Setup a Amazon Cognito for unathenticated access.
+2. https://us-east-1.console.aws.amazon.com/cognito/code/?pool=us-east-1:ea714e9e-b1be-41bf-aa56-e06de7b1b7e8&token=48c05a8edebe803d2e475239e9eef9cced6019cb05020646751a77f20d6bf987&response=%7B%22authRole%22%3A%22arn%3Aaws%3Aiam%3A%3A371395676052%3Arole%2FCognito_2022drawingprompts2Auth_Role%22%2C%22unauthRole%22%3A%22arn%3Aaws%3Aiam%3A%3A371395676052%3Arole%2FCognito_2022drawingprompts2Unauth_Role%22%7D
+3. This is a special AWS account that can make API calls without a secret key
+4. Allow CORS requests on the permissions tab of the S3 Bucket
+5. Allow permission for all users to perform s3.GetResource, s3.ListObjects, etc, ...
+
+

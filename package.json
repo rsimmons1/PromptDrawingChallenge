@@ -1,0 +1,9 @@
+{
+  "type": "module",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.264.0",
+    "aws-sdk": "^2.1309.0",
+    "browserify": "^17.0.0",
+    "uniq": "^1.0.1"
+  }
+}
