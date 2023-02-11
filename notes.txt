@@ -33,4 +33,5 @@ b. That's it, that's all I wanted.
 4. Allow CORS requests on the permissions tab of the S3 Bucket
 5. Allow permission for all users to perform s3.GetResource, s3.ListObjects, etc, ...
 
-
+- AWS Bills Page (why was this so hard to find)
+https://us-east-1.console.aws.amazon.com/billing/home?region=us-east-1#/bills?year=2023&month=2
