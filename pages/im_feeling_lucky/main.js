@@ -6,16 +6,19 @@ const /** @type {HTMLImageElement|null} */displayImage = document.querySelector(
 const imageTitle = document.getElementById("image-title");
 const randomImageButton = document.getElementById("random-image-button");
 
-lib.getPromptPaths((data) => {
-    promptImagesPaths = data.Contents.map((/** @type {{ Key: any; }} */ x) => {
-        return x.Key
-    });
+if (displayImage && imageTitle) {
+    if (initialPageHash === '') {
+        console.log("Setting initial image");
+        displayImage.src = lib.INITIAL_IMAGE_URL;
+        imageTitle.textContent = lib.INITIAL_IMAGE_NAME;
+    }
+}
 
-    promptImagesPaths = promptImagesPaths.filter((/** @type {string} */ x) => {
-        return x.startsWith("2022");
-    });
 
-    console.log("Page Hash: " + initialPageHash);
+
+lib.loadPromptPathsFromFile((data) => {
+    promptImagesPaths = data.promptPaths;
+
     if (initialPageHash !== '') {
         let hashPromptpath = lib.getPromptPathFromName(promptImagesPaths, initialPageHash.slice(1));
         let imageUrl = lib.createS3Url(hashPromptpath);

@@ -1,21 +1,14 @@
-var AWS = require('aws-sdk');
+
 var s3Url = "https://2022-prompt-drawings.s3.amazonaws.com";
 
-// Connect to S3.
-const REGION = "us-east-1";
-AWS.config.region = REGION;
-var cognito_credentials = "us-east-1:ea714e9e-b1be-41bf-aa56-e06de7b1b7e8";
-var creds = new AWS.CognitoIdentityCredentials({
-    IdentityPoolId: cognito_credentials
-});
+const INITIAL_IMAGE_URL = "https://2022-prompt-drawings.s3.amazonaws.com/2022/20220101_purge.png";
+const INITIAL_IMAGE_NAME = "purge";
+const PROMPT_PATH_JSON_URL = "https://2022-prompt-drawings.s3.amazonaws.com/2022_prompt_paths.json";
 
 // Matches the pattern 2022/<YYYY><MM><DD>_<prompt_name>.png
 // An example:
 // - 2022/20220817_wing.png -> Match! Groups = {name:"wing"}
 const fileNameMatchingRegex = /2022\/\d\d\d\d\d\d\d\d_(?<name>.*).png/gm;
-
-AWS.config.credentials = creds
-var s3 = new AWS.S3({ region: REGION, credentials: creds });
 // Set the AWS Region.
 
 var params = {
@@ -26,17 +19,6 @@ var params = {
 module.exports.createS3Url = function (fileName) {
     return s3Url + "/" + fileName;
 };
-
-/** Retrieves prompt file paths from s3 bucket. */
-module.exports.getPromptPaths = function (callback) {
-    s3.listObjectsV2(params, (err, data) => {
-        console.log(err);
-        if (data) {
-            callback(data);
-        }
-    });
-};
-
 /** Finds the full prompt path with the corresponding prompt name.
  * 
  * For Example:
@@ -63,3 +45,14 @@ module.exports.getPromptNameFromFilepath = function (/** @type {string} */filepa
         return '';
     }
 };
+
+module.exports.loadPromptPathsFromFile = function (callback) {
+    fetch(PROMPT_PATH_JSON_URL)
+        .then((response) => response.json())
+        .then((data) => {
+            callback(data);
+        });
+}
+
+module.exports.INITIAL_IMAGE_NAME = INITIAL_IMAGE_NAME;
+module.exports.INITIAL_IMAGE_URL = INITIAL_IMAGE_URL;

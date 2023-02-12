@@ -63,6 +63,15 @@ aws configure
 aws s3 sync . s3://2022-prompt-drawings/<page_name>/
 ```
 
+### Updating Prompt Paths
+The paths to all the prompt files are stored in a file named `2022_prompt_paths.json`.
+If the drawing files in the S3 bucket get updated run the following command:
+
+```
+node update-s3-prompts.cjs
+```
+
+Then upload the resulting `2022_prompt_paths.json` file to the S3 bucket.
 
 ## Resources
 
