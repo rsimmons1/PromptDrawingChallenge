@@ -35,3 +35,9 @@ b. That's it, that's all I wanted.
 
 - AWS Bills Page (why was this so hard to find)
 https://us-east-1.console.aws.amazon.com/billing/home?region=us-east-1#/bills?year=2023&month=2
+
+- Root user CLI guide https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html
+
+- IAM page https://us-east-1.console.aws.amazon.com/iamv2/home?region=us-east-1#/home
+
+- Root user credentials page https://us-east-1.console.aws.amazon.com/iamv2/home?region=us-east-1#/security_credentials

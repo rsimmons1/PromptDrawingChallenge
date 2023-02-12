@@ -44,12 +44,27 @@ To setup a local server for development
 python3 -m http.server
 ```
 
-### S3 Deployment
+## S3 Deployment
 
+### Manual Method
 When ready, simply upload the html + JS files into the S3 bucket.
 
+### CLI Method
+1. Download the AWS CLI
+2. Run AWS CLI Configure (Follow [AWS guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html) for details gettign access key)
+```
+aws configure
+``` 
 
-### Resources
+
+3. cd into the page that needs to be updated in `pages/`
+4. Run command
+```
+aws s3 sync . s3://2022-prompt-drawings/<page_name>/
+```
+
+
+## Resources
 
 S3 Bucket:
 - Name: 2022-prompt-drawings

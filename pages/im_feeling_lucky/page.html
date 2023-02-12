@@ -3,24 +3,29 @@
 
 <head>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-<body class="bg-slate-900 text-slate-50">
-
-    <div class="flex p-10">
-        <div class="grid m-auto place-items-center">
-            <h1 class="text-3xl p-1 font-bold">2022 Drawing Challenge</h1>
-            <div class="max-w-sm rounded-lg shadow grid place-items-center m-5 p-3 bg-slate-800">
-                <img id="display-image" class="rounded-t-lg"
+<body class="bg-zinc-900 text-zinc-50">
+    <div class="flex h-screen pb-[20vh] landscape:pb-0 pt-20 landscape:pt-0">
+        <div class="grid mx-auto place-items-center">
+            <h1 class="text-7xl landscape:text-3xl p-1 font-bold">2022 Drawing Challenge</h1>
+            <p class="text-3xl landscape:text-lg text-center">
+                <a href="https://www.instagram.com/drknottercreations">Art provided by Pat Plunket <br><span
+                        class="fa fa-instagram"></span> <span class="text-blue-500">@drknottercreations</span></a>
+            </p>
+            <div
+                class="w-[80vw] landscape:w-full rounded-lg shadow grid place-items-center mt-5 p-10 landscape:p-5 bg-zinc-800">
+                <img id="display-image" class="w-full rounded-t-lg"
                     src="https://2022-prompt-drawings.s3.amazonaws.com/2022/20220101_purge.png" alt="" />
-                <div class="p-5">
-                    <h5 id="image-title" class="mb-2 text-4xl font-bold tracking-tight text-white">
-                        Purge</h5>
+                <div class="p-10 landscape:p-5">
+                    <h5 id="image-title" class="mb-2 text-7xl landscape:text-4xl font-bold tracking-tight text-white">
+                        purge</h5>
                 </div>
             </div>
-            <div class="p-1">
+            <div class="m-5">
                 <button
-                    class="bg-slate-800 hover:bg-slate-700 font-semibold py-2 px-4 border border-gray-400 rounded-xl shadow"
+                    class="text-6xl landscape:text-xl bg-zinc-800 hover:bg-zinc-700 font-semibold py-4 px-4 border border-gray-400 rounded-xl shadow"
                     id="random-image-button">Random Image</button>
             </div>
 

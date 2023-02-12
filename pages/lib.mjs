@@ -42,7 +42,7 @@ module.exports.getPromptNameFromFilepath = function (/** @type {string} */filepa
     fileNameMatchingRegex.lastIndex = 0;
     var match = fileNameMatchingRegex.exec(filepath);
     if (match !== null && match.length == 2) {
-        return match[1];
+        return match[1].toLocaleLowerCase();
     } else {
         return '';
     }
