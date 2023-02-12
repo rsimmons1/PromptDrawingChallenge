@@ -6,7 +6,7 @@ var promptImagesNames = [];
 const imageDropDown = document.querySelector('#image-name');
 const displayImage = document.querySelector('#display-image');
 
-lib.getPromptNames((data) => {
+lib.getPromptPaths((data) => {
     console.log("testing new code");
     promptImagesNames = data.Contents.map((x) => {
         var option = document.createElement("option");

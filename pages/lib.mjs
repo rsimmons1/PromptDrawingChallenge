@@ -12,7 +12,7 @@ var creds = new AWS.CognitoIdentityCredentials({
 // Matches the pattern 2022/<YYYY><MM><DD>_<prompt_name>.png
 // An example:
 // - 2022/20220817_wing.png -> Match! Groups = {name:"wing"}
-const fileNameMatchingRegex = /^2022\/\d\d\d\d\d\d\d\d_(?<name>.*).png/gm;
+const fileNameMatchingRegex = /2022\/\d\d\d\d\d\d\d\d_(?<name>.*).png/gm;
 
 AWS.config.credentials = creds
 var s3 = new AWS.S3({ region: REGION, credentials: creds });
@@ -27,15 +27,31 @@ module.exports.createS3Url = function (fileName) {
     return s3Url + "/" + fileName;
 };
 
-/** Retrieves prompt file names from s3 bucket. */
-module.exports.getPromptNames = function (callback) {
+/** Retrieves prompt file paths from s3 bucket. */
+module.exports.getPromptPaths = function (callback) {
     s3.listObjectsV2(params, (err, data) => {
         console.log(err);
         if (data) {
             callback(data);
         }
     });
-}
+};
+
+/** Finds the full prompt path with the corresponding prompt name.
+ * 
+ * For Example:
+ *  state -> 2022/20221014_state.png 
+ */
+module.exports.getPromptPathFromName = function (promptPaths, promptName) {
+    for (let /** @type {string} */index in promptPaths) {
+        let promptPath = promptPaths[index];
+        let currentPromptName = module.exports.getPromptNameFromFilepath(promptPath);
+        if (currentPromptName === promptName.toLocaleLowerCase()) {
+            return promptPath;
+        }
+    }
+    return "";
+};
 
 /** Gets the title of  */
 module.exports.getPromptNameFromFilepath = function (/** @type {string} */filepath) {
@@ -46,4 +62,4 @@ module.exports.getPromptNameFromFilepath = function (/** @type {string} */filepa
     } else {
         return '';
     }
-}
+};
